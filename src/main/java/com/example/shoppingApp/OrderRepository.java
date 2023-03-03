@@ -79,7 +79,7 @@ public class OrderRepository {
         return count;
     }
 
-    public String getLastTime(String partnerId) {
+    public int getLastTime(String partnerId) {
         int maxTime=0;
         List<String>orders=partnerOrderMap.get(partnerId);
         for(String order:orders)
@@ -87,7 +87,7 @@ public class OrderRepository {
             int tym=orderHashMap.get(order).getDeliveryTime();
             maxTime=Math.max(tym,maxTime);
         }
-        return String.valueOf(maxTime);
+        return maxTime;
     }
 
     public void delete(String partnerId) {

@@ -52,7 +52,18 @@ public class OrderService {
     }
 
     public String getDeliveryTime(String partnerId) {
-        return orderRepository.getLastTime(partnerId);
+        int time=orderRepository.getLastTime(partnerId);
+        String HH=String.valueOf(time/60);
+        String MM=String.valueOf(time%60);
+        if(HH.length()<2)
+        {
+            HH='0'+HH;
+        }
+        if(MM.length()<10)
+        {
+            MM='0'+MM;
+        }
+        return HH+':'+MM;
     }
 
     public void delete(String partnerId) {
